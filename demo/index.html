@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>半字 · 可玩键盘线框</title>
+<style>
+  :root{--bg:#0E1426;--bg2:#131A2E;--surface:#1B2440;--line:#2A3556;--text:#E8ECF8;--muted:#9AA4C4;--dim:#6B7699;--cyan:#22D3EE;--purple:#C084FC;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(120% 70% at 80% 0%,rgba(34,211,238,.10),transparent 60%),var(--bg);
+       color:var(--text);font-family:-apple-system,"PingFang SC","Noto Sans CJK SC",sans-serif;padding:24px 16px 48px;}
+  .wrap{max-width:880px;margin:0 auto;}
+  h1{font-size:26px;margin:0 0 6px;}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:26px;line-height:1.6;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+  a.card{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);
+         border-radius:16px;padding:16px;transition:.15s;}
+  a.card:hover{transform:translateY(-2px);border-color:var(--cyan);}
+  .card h2{font-size:16px;margin:0 0 6px;color:var(--cyan);}
+  .card p{margin:0;color:var(--muted);font-size:13px;line-height:1.55;}
+  .tag{display:inline-block;margin-top:10px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;
+       color:var(--dim);font-size:11px;}
+  .foot{margin-top:28px;color:var(--dim);font-size:12px;line-height:1.7;}
+  iframe{border:0;border-radius:18px;background:#05070D;width:100%;height:640px;}
+  .phone{max-width:420px;margin:22px auto 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>半字 · 可玩键盘线框</h1>
+  <div class="sub">静态 HTML 复刻输入法真机布局：能点、能算、能滚动。<br>
+  设计参数（键高/键距/圆角/候选栏）与线上 App 同源，改完即所见即所得。</div>
+
+  <div class="grid">
+    <a class="card" href="keyboard-number.html">
+      <h2>数字页 · 九宫格</h2>
+      <p>左滚动符号列 / 1–9 九宫格 / Back 0 . / ⌫ 空格 x÷y ⏎，支持复杂算式与两条计算候选。</p>
+      <span class="tag">点开即玩</span>
+    </a>
+    <a class="card" href="keyboard-number.html#calc">
+      <h2>复杂计算</h2>
+      <p>输入 <code>191÷71%×75^2</code> 按 =，候选栏出「完整算式」和「结果」两条。</p>
+      <span class="tag">试试计算键</span>
+    </a>
+  </div>
+
+  <div class="phone"><iframe src="keyboard-number.html" title="数字页线框"></iframe></div>
+
+  <div class="foot">
+    线框源码：demo/keyboard-number.html · 设计契约：design/SCHEMA.md · 项目主页见 GitHub 仓库 README
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>半字 · 数字页（HTML 线框 v2）</title>
+<style>
+  :root{
+    --bg:#0E1426; --bg2:#131A2E; --surface:#1B2440; --surface2:#232C4A;
+    --line:#2A3556; --text:#E8ECF8; --muted:#9AA4C4; --dim:#6B7699;
+    --cyan:#22D3EE; --purple:#C084FC;
+    --candh:32px; --gap:4px; --radius:11px;
+    --kbh:188px;   /* = 4 × 46dp + 内边距，与 26 键页一致 */
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;background:#05070D;font-family:-apple-system,"PingFang SC","Noto Sans CJK SC",sans-serif;}
+  #stage{max-width:420px;margin:0 auto;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;}
+  #app{flex:1;padding:14px 12px 10px;display:flex;flex-direction:column;gap:10px;background:
+        radial-gradient(120% 70% at 80% 0%, rgba(34,211,238,.08), transparent 60%), var(--bg);}
+  .bar{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px rgba(34,211,238,.7);}
+  #field{flex:1;border-radius:14px;border:1px solid var(--line);background:var(--bg2);
+         padding:12px;color:var(--text);font-size:17px;line-height:1.5;word-break:break-all;min-height:110px;}
+  #field .ph{color:var(--dim);}
+  #result{font-size:13px;color:var(--cyan);min-height:18px;padding:0 2px;}
+  /* 候选栏 */
+  #topbar{display:flex;align-items:center;gap:6px;padding:3px 6px;background:var(--bg);}
+  #cand{flex:1;height:var(--candh);display:flex;align-items:center;gap:6px;overflow-x:auto;
+        scrollbar-width:none;}
+  #cand::-webkit-scrollbar{display:none;}
+  .idle{display:flex;align-items:center;padding-left:8px;color:var(--dim);font-size:12px;white-space:nowrap;}
+  .idle i{width:5px;height:5px;border-radius:50%;background:var(--cyan);opacity:.45;display:inline-block;
+          margin-right:7px;box-shadow:4px 0 0 rgba(34,211,238,.25),8px 0 0 rgba(34,211,238,.15),12px 0 0 rgba(34,211,238,.08);}
+  .chip{flex:0 0 auto;height:28px;padding:0 12px;border-radius:9px;background:var(--surface);
+        border:1px solid var(--line);color:var(--text);font-size:14px;display:flex;align-items:center;}
+  .chip:active{background:var(--surface2);}
+  .chip b{color:var(--cyan);font-weight:600;}
+  #exit{width:40px;height:var(--candh);border-radius:9px;display:flex;align-items:center;
+        justify-content:center;color:var(--muted);background:var(--surface);border:1px solid var(--line);font-size:15px;}
+  #rule{height:1px;background:rgba(255,255,255,.10);}
+  /* 键盘：5 行，总高 = 188px（等于 26 键页） */
+  #kb{height:var(--kbh);padding:4px 5px 8px;background:var(--bg);}
+  #rows{display:flex;gap:var(--gap);height:100%;}
+  .colL{flex:0 0 calc((100% - 2 * var(--gap)) / 5);overflow-y:auto;scrollbar-width:none;display:flex;flex-direction:column;gap:var(--gap);}
+  .colL::-webkit-scrollbar{display:none;}
+  .colL .op{flex:0 0 calc((100% - 3 * var(--gap)) / 4);border-radius:var(--radius);
+            display:flex;align-items:center;justify-content:center;font-size:21px;
+            color:var(--cyan);background:var(--surface);border:1px solid var(--line);}
+  .colL .op:active,.colL .op.hit{background:var(--surface2);}
+  .colC{flex:1;display:flex;flex-direction:column;gap:var(--gap);}
+  .colC .row{flex:1;display:flex;gap:var(--gap);}
+  .colR{flex:0 0 calc((100% - 2 * var(--gap)) / 5);display:flex;flex-direction:column;gap:var(--gap);}
+  .k{flex:1;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;
+     background:var(--surface);border:1px solid var(--line);color:var(--text);
+     font-size:19px;user-select:none;position:relative;}
+  .k:active,.k.hit{background:var(--surface2);}
+  .k.digit{font-size:24px;}
+  .k.fn{color:var(--cyan);font-size:14px;}
+  .k.emo{color:var(--purple);font-size:13px;}
+  .k.back{font-size:14px;color:var(--muted);}
+  .k.calc{color:var(--cyan);font-size:14px;flex-direction:column;line-height:1.05;}
+  .k.calc small{font-size:9px;color:var(--dim);}
+  .k.enter{color:var(--cyan);font-size:17px;}
+  .k.ghost{background:transparent;border:1px dashed rgba(255,255,255,.12);color:var(--dim);font-size:10px;}
+  #notes{max-width:420px;margin:0 auto;padding:12px 14px 26px;color:var(--dim);
+         font-size:12px;line-height:1.7;background:#05070D;}
+  #notes b{color:var(--muted);font-weight:600;}
+  #notes .tag{display:inline-block;padding:1px 7px;border-radius:999px;border:1px solid var(--line);
+              color:var(--cyan);margin-right:6px;font-size:11px;}
+  #toast{position:fixed;left:50%;transform:translateX(-50%) translateY(10px);bottom:120px;
+         background:rgba(20,26,46,.95);border:1px solid var(--line);color:var(--text);
+         padding:8px 14px;border-radius:999px;font-size:12px;opacity:0;transition:.18s;pointer-events:none;}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="app">
+    <div class="bar"><span class="dot"></span><span>半字 · 数字页线框 v9（可点）</span>
+      <span style="margin-left:auto;color:var(--dim)">4 行 · 与 26 键同高</span></div>
+    <div id="field"><span class="ph">点数字/运算符，再点 x÷y 看候选栏</span></div>
+    <div id="result"></div>
+  </div>
+
+  <div id="topbar">
+    <div id="cand"><div class="idle"><i></i>候选栏（计算后这里出两条）</div></div>
+    <div id="exit" onclick="toast('收起键盘（演示）')">⌄</div>
+  </div>
+  <div id="rule"></div>
+
+  <div id="kb">
+    <div id="rows">
+      <div class="colL" id="colL">
+        <div class="op" data-k="+">+</div><div class="op" data-k="−">−</div>
+        <div class="op" data-k="×">×</div><div class="op" data-k="÷">÷</div>
+        <div class="op" data-k="^">^</div><div class="op" data-k="=">=</div><div class="op" data-k="%">%</div>
+        <div class="op" data-k="(">(</div><div class="op" data-k=")">)</div>
+        <div class="op" data-k="[">[</div><div class="op" data-k="]">]</div>
+        <div class="op" data-k="{">{</div><div class="op" data-k="}">}</div>
+        <div class="op" data-k="@">@</div><div class="op" data-k="#">#</div>
+        <div class="op" data-k="&amp;">&amp;</div><div class="op" data-k="*">*</div>
+        <div class="op" data-k="&quot;">"</div><div class="op" data-k="'">'</div>
+        <div class="op" data-k="!">!</div><div class="op" data-k="?">?</div>
+        <div class="op" data-k=":">:</div><div class="op" data-k=";">;</div>
+        <div class="op" data-k="_">_</div><div class="op" data-k="~">~</div>
+      </div>
+
+      <div class="colC">
+        <div class="row"><div class="k digit" data-k="1">1</div><div class="k digit" data-k="2">2</div><div class="k digit" data-k="3">3</div></div>
+        <div class="row"><div class="k digit" data-k="4">4</div><div class="k digit" data-k="5">5</div><div class="k digit" data-k="6">6</div></div>
+        <div class="row"><div class="k digit" data-k="7">7</div><div class="k digit" data-k="8">8</div><div class="k digit" data-k="9">9</div></div>
+        <div class="row"><div class="k back" id="backKey">Back</div><div class="k digit" data-k="0">0</div><div class="k digit" data-k=".">.</div></div>
+      </div>
+
+      <div class="colR">
+        <div class="k fn" id="delKey">⌫</div>
+        <div class="k fn" data-k=" ">空格</div>
+        <div class="k calc" id="calcKey">x÷y<small>计算</small></div>
+        <div class="k enter" id="enterKey">⏎</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="notes">
+  <div><span class="tag">宽</span>左 1 + 中 3 + 右 1 列，<b>左右两条纵栏等宽，完全对称</b>；4 行，总高 = 26 键页</div>
+  <div><span class="tag">左列</span>可滚动运算符/符号；点按上屏</div>
+  <div><span class="tag">中区</span>1–9 九宫格；第 4 行 Back / 0 / .；没有第 5 行</div>
+  <div><span class="tag">右列</span>⌫ / 空格 / x÷y（计算）/ ⏎（回车，在 x÷y 下）——Emo 收进符号页</div>
+  <div><span class="tag">计算</span><b>= 正常上屏</b>，同时若前方算式合法 → 候选栏出两条候选，点哪条替换「算式=」整段；不合法只留 =</div><div><span class="tag">复杂运算</span>支持 <b>(), %, ^, 小数, 负号, 隐式乘法</b>：<code>100÷12%=</code>、<code>(1+2)×3=</code>、<code>2^10=</code>、<code>2(3+4)=</code></div>
+  <div><span class="tag">定了</span>算式范围 = 光标前连续的数字/运算符；Emo 入口在符号页</div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  var expr = '';
+  var field = document.getElementById('field');
+  var result = document.getElementById('result');
+  var cand = document.getElementById('cand');
+  var toastEl = document.getElementById('toast');
+
+  function toast(msg){
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(window.__tt);
+    window.__tt = setTimeout(function(){ toastEl.classList.remove('show'); }, 1400);
+  }
+  function render(){
+    if (!expr) field.innerHTML = '<span class="ph">点数字/运算符，输完算式按 = 看候选</span>';
+    else field.textContent = expr;
+  }
+  function idleCand(){ cand.innerHTML = '<div class="idle"><i></i>候选栏（算式后按 = 或 x÷y 出两条）</div>'; }
+  function push(ch){ expr += ch; render(); idleCand(); }
+  function del(){ expr = expr.slice(0, -1); render(); idleCand(); }
+
+  // ---------- 复杂算式求值器：+ - × ÷ * / ( ) % ^ 和小数、负号、隐式乘法 ----------
+  function evalExpr(src){
+    var s = String(src).replace(/\s+/g,'')
+        .replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
+    var i = 0;
+    function peek(){ return s.charAt(i); }
+    function add(){
+      var v = mul();
+      while (i < s.length && (peek()==='+' || peek()==='-')) {
+        var op = s.charAt(i++); var r = mul();
+        v = (op==='+') ? v + r : v - r;
+      }
+      return v;
+    }
+    function mul(){
+      var v = unary();
+      while (i < s.length) {
+        var c = peek();
+        if (c==='*' || c==='/') { i++; var r = unary(); v = (c==='*') ? v*r : v/r; }
+        else if (c==='(') { v = v * unary(); }      // 2(3+4) 隐式乘法
+        else break;
+      }
+      return v;
+    }
+    function unary(){
+      if (peek()==='-') { i++; return -unary(); }
+      if (peek()==='+') { i++; return unary(); }
+      return power();
+    }
+    function power(){
+      var v = postfix();
+      if (peek()==='^') { i++; var r = unary(); return Math.pow(v, r); }
+      return v;
+    }
+    function postfix(){
+      var v = atom();
+      while (peek()==='%') { i++; v = v / 100; }     // 12% = 0.12
+      return v;
+    }
+    function atom(){
+      if (peek()==='(') { i++; var v = add(); if (peek()!==')') throw 'paren'; i++; return v; }
+      var st = i;
+      while (i < s.length && /[0-9.]/.test(s.charAt(i))) i++;
+      if (st === i) throw 'num';
+      var n = parseFloat(s.slice(st, i));
+      if (!isFinite(n)) throw 'num';
+      return n;
+    }
+    var v = add();
+    if (i < s.length) throw 'trailing';
+    return v;
+  }
+
+  // 光标前连续的算式字符（含已敲的 =）
+  function trailingExpr(){
+    var m = expr.match(/[0-9+\-×÷*/%.()=^ ]+$/);
+    return m ? m[0] : '';
+  }
+  // 去掉末尾 = 后求值；不合法返回 null
+  function evaluateTrailing(){
+    var raw = trailingExpr().trim();
+    var e = raw.replace(/=+\s*$/, '').trim();
+    if (!e) return null;
+    try {
+      var v = evalExpr(e);
+      if (typeof v !== 'number' || !isFinite(v)) return null;
+      v = Math.round(v * 1e10) / 1e10;
+      return { raw: raw, expr: e, value: v, full: e + '=' + v };
+    } catch (err) { return null; }
+  }
+  function showCalcCandidates(r){
+    cand.innerHTML = '';
+    var a = document.createElement('div'); a.className = 'chip';
+    a.innerHTML = '<b>' + r.full + '</b>';
+    var b = document.createElement('div'); b.className = 'chip';
+    b.textContent = String(r.value);
+    a.onclick = function(){ commitCalc(r, r.full); };
+    b.onclick = function(){ commitCalc(r, String(r.value)); };
+    cand.appendChild(a); cand.appendChild(b);
+    result.textContent = '算式：' + r.expr + ' → 两条候选（完整算式 / 结果），点一条上屏';
+  }
+  function commitCalc(r, out){
+    expr = expr.slice(0, expr.length - r.raw.length) + out;
+    render(); idleCand();
+    result.textContent = '已上屏：' + out;
+  }
+  function tryCalc(manual){
+    var r = evaluateTrailing();
+    if (!r) { if (manual) toast('光标前没有可算的算式'); return false; }
+    showCalcCandidates(r);
+    return true;
+  }
+
+  document.querySelectorAll('[data-k]').forEach(function(el){
+    el.addEventListener('click', function(){
+      el.classList.add('hit'); setTimeout(function(){ el.classList.remove('hit'); }, 90);
+      var ch = el.getAttribute('data-k');
+      if (ch === '=') {
+        push('=');          // 等号照常上屏
+        tryCalc(false);     // 前方算式合法就顺带出两条候选
+      } else {
+        push(ch);
+      }
+    });
+  });
+  document.getElementById('delKey').onclick = del;
+  document.getElementById('backKey').onclick = function(){ toast('Back：回 26 键页（演示）'); };
+  document.getElementById('enterKey').onclick = function(){ toast('⏎ 回车（演示）'); };
+  document.getElementById('calcKey').onclick = function(){ tryCalc(true); };
+</script>
+</body>
+</html>

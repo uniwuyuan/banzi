@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用途：粘贴 -->
+<!-- 源文件：design/icons/paste.svg · 由 design/icons 统一维护，24×24 网格、线宽 1.8、圆头圆角 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M7.2 4H16.8A2.6 2.6 0 0 1 19.4 6.6V18.8A2.6 2.6 0 0 1 16.8 21.4H7.2A2.6 2.6 0 0 1 4.6 18.8V6.6A2.6 2.6 0 0 1 7.2 4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.2 2.2H13.8A1.4 1.4 0 0 1 15.2 3.6V4.8A1.4 1.4 0 0 1 13.8 6.2H10.2A1.4 1.4 0 0 1 8.8 4.8V3.6A1.4 1.4 0 0 1 10.2 2.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 9.6L12 16.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.4 13.6L12 16.2L14.6 13.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

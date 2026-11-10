@@ -1,0 +1,55 @@
+{
+  "_comment": "首发/重置后的出厂外观。历史版本这里曾写入 candH=4、chipH=2，导致候选栏被压成芝麻粒；2026-11-09 修正为出厂值。",
+  "meta": {
+    "name": "出厂基准",
+    "updated": "2026-11-09"
+  },
+  "colors": {
+    "bg": "#0E1426",
+    "bg2": "#131A2E",
+    "toolbar": "#151C33",
+    "surface": "#1B2440",
+    "surface2": "#232C4A",
+    "surface3": "#2B2545",
+    "line": "#2A3556",
+    "strip": "#0B1020",
+    "text": "#E8ECF8",
+    "muted": "#9AA4C4",
+    "dim": "#6B7699",
+    "cyan": "#22D3EE",
+    "purple": "#C084FC",
+    "mint": "#5EEAD4",
+    "orange": "#FF9F43",
+    "warn": "#FFC857",
+    "ink": "#0B1020"
+  },
+  "dims": {
+    "keyH": 46,
+    "keyGap": 4,
+    "keyRadius": 12,
+    "tabH": 38,
+    "tabW": 72,
+    "tabRadius": 19,
+    "candH": 32,
+    "candRadius": 14,
+    "panelH": 92,
+    "cardRadius": 18,
+    "chipH": 40,
+    "chipRadius": 20,
+    "fontKey": 16,
+    "fontTab": 13,
+    "fontSmall": 12,
+    "fontCand": 15,
+    "fontPanel": 15
+  },
+  "fx": {
+    "bgBlur": 0,
+    "bgDim": 0,
+    "glassAlpha": 65,
+    "glassBlur": 0,
+    "animOn": 1,
+    "animMs": 800,
+    "glyphMode": 0,
+    "rippleMode": 0
+  }
+}

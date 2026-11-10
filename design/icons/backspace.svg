@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用途：退格键（左尖气泡 + ×） -->
+<!-- 源文件：design/icons/backspace.svg · 由 design/icons 统一维护，24×24 网格、线宽 1.8、圆头圆角 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M9.2 4.6H19.6A2.2 2.2 0 0 1 21.8 6.8V17.2A2.2 2.2 0 0 1 19.6 19.4H9.2L2.8 12Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11.6 9.4L16.4 14.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16.4 9.4L11.6 14.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

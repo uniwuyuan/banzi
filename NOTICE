@@ -1,0 +1,16 @@
+半字 Banzi — 第三方组件与声明
+================================
+
+本仓库（文本/设计资产/UI 参考实现/AI 评测脚本）采用 Apache License 2.0。
+
+APK 二进制中包含以下第三方组件（或链接）：
+- Kotlin standard library 2.0.21 — Apache License 2.0
+- sherpa-onnx / onnxruntime — Apache License 2.0
+- liquidglass 界面组件 — 版权归原作者，随 APK 分发；如有授权问题请联系仓库维护者删除
+
+本仓库不包含、也不授权以下内容：
+- 半字拼音引擎、音节表、分词与整句 DP 实现
+- 词库、词频、用户词库与联想数据
+- 原生 ASR/JNI 构建产物
+
+图标系统（design/icons/*.svg）为本项目自制，遵循本仓库许可。

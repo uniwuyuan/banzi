@@ -1,0 +1,25 @@
+# 构建产物与本地缓存
+build/
+.bcache/
+.hotbase/
+.snapshots/
+*.apk
+!release/*.apk
+*.log
+*.dex
+*.class
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+
+# 签名与密钥
+*.keystore
+*.jks
+keystore.properties
+
+# 个人数据/手机导出，绝不入库
+data/
+files/
+shared_prefs/
+*.tar.gz

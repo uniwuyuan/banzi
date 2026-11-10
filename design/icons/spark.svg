@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用途：AI / 智能（四角星） -->
+<!-- 源文件：design/icons/spark.svg · 由 design/icons 统一维护，24×24 网格、线宽 1.8、圆头圆角 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M12 2.6L14.26 9.74L21.4 12L14.26 14.26L12 21.4L9.74 14.26L2.6 12L9.74 9.74Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18.05 4.8A1.15 1.15 0 1 0 20.35 4.8A1.15 1.15 0 1 0 18.05 4.8Z" fill="currentColor"/>
+</svg>

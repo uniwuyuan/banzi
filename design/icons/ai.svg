@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用途：AI 键 / AI 联想入口（对话气泡 + 星） -->
+<!-- 源文件：design/icons/ai.svg · 由 design/icons 统一维护，24×24 网格、线宽 1.8、圆头圆角 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M6 4H18A3.5 3.5 0 0 1 21.5 7.5V14A3.5 3.5 0 0 1 18 17.5H6A3.5 3.5 0 0 1 2.5 14V7.5A3.5 3.5 0 0 1 6 4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.5 17.5L8.5 21.5L13.5 17.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16.2 7.2L17.07 9.73L19.6 10.6L17.07 11.47L16.2 14L15.33 11.47L12.8 10.6L15.33 9.73Z" fill="currentColor"/>
+  <path d="M6 9L10.4 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6 12.4L9.4 12.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

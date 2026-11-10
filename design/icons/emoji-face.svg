@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用途：表情键（笑脸） -->
+<!-- 源文件：design/icons/emoji-face.svg · 由 design/icons 统一维护，24×24 网格、线宽 1.8、圆头圆角 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M3.4 12A8.6 8.6 0 1 0 20.6 12A8.6 8.6 0 1 0 3.4 12Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M7.7 10A1.3 1.3 0 1 0 10.3 10A1.3 1.3 0 1 0 7.7 10Z" fill="currentColor"/>
+  <path d="M13.7 10A1.3 1.3 0 1 0 16.3 10A1.3 1.3 0 1 0 13.7 10Z" fill="currentColor"/>
+  <path d="M8.4 14.6Q12 18 15.6 14.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

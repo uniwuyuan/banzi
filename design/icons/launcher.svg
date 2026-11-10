@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用途：半字启动图标（自适应图标前景，108×108，安全区 72×72） -->
+<!-- 源文件：design/icons/launcher.svg · 由 design/icons 统一维护，24×24 网格、线宽 1.8、圆头圆角 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108" fill="none">
+  <defs>
+    <linearGradient id="clawGrad" x1="0" y1="0" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+    <linearGradient id="clawGrad2" x1="0" y1="0" x2="108" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C084FC"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <path d="M42.5 36.5L47 42.5" fill="none" stroke="url(#clawGrad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M66.5 34.5L60.5 42.5" fill="none" stroke="url(#clawGrad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36 56L72 56" fill="none" stroke="url(#clawGrad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M29 71L79 71" fill="none" stroke="url(#clawGrad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54 45.5L54 87" fill="none" stroke="url(#clawGrad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M82 17L83.78 22.22L89 24L83.78 25.78L82 31L80.22 25.78L75 24L80.22 22.22Z" fill="url(#clawGrad2)"/>
+</svg>

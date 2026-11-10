@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用途：设置 / 参数（滑杆 + 旋钮） -->
+<!-- 源文件：design/icons/settings.svg · 由 design/icons 统一维护，24×24 网格、线宽 1.8、圆头圆角 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M3 7L21 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M3 12L21 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M3 17L21 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.3 7A2.1 2.1 0 1 0 10.5 7A2.1 2.1 0 1 0 6.3 7Z" fill="currentColor"/>
+  <path d="M13.3 12A2.1 2.1 0 1 0 17.5 12A2.1 2.1 0 1 0 13.3 12Z" fill="currentColor"/>
+  <path d="M4.5 17A2.1 2.1 0 1 0 8.7 17A2.1 2.1 0 1 0 4.5 17Z" fill="currentColor"/>
+</svg>
