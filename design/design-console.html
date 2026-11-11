@@ -173,8 +173,9 @@
   .scrollgrid{overflow-y:auto;overflow-x:hidden}
   .scrollgrid::-webkit-scrollbar{width:3px}
   .scrollgrid::-webkit-scrollbar-thumb{background:#24304c;border-radius:3px}
-  .scrollcol{display:flex;flex-direction:column}
-  .scrollcol::-webkit-scrollbar{display:none}
+  .scrollcol{display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .scrollcol::-webkit-scrollbar{display:none;width:0}
+  .scrollcol>.altcell{flex:0 0 auto}
   /* 页签栏（仅符号/Emoji）：最左「返回」固定，其余横向滚动 */
   .altrail{display:flex;gap:4px;padding:3px 5px;overflow:hidden;align-items:stretch}
   .altrail .rttab{flex:none;min-width:64px;border-radius:12px;background:transparent;color:#9AA4C4;
@@ -1811,7 +1812,7 @@ function numMockHtml(interactive){
   return '<div class="mock altmock">' + candidateBarHtml() +
     '<div style="padding:5px 8px 6px">' +
       '<div style="display:flex;gap:' + gap + 'px;height:' + bodyH + 'px">' +
-        '<div class="scrollcol" style="flex:1;min-width:0;max-height:' + bodyH + 'px">' + sideCells + '</div>' +
+        '<div class="scrollcol" style="flex:1;min-width:0;height:' + bodyH + 'px;gap:' + gap + 'px">' + sideCells + '</div>' +
         '<div style="flex:3;min-width:0;display:flex;flex-direction:column;gap:' + gap + 'px">' + digitRows + '</div>' +
         '<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:' + gap + 'px">' + funcCells + '</div>' +
       '</div>' +
