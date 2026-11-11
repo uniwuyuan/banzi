@@ -7,7 +7,7 @@
 ![stars](https://img.shields.io/github/stars/uniwuyuan/banzi?style=social)
 ![release](https://img.shields.io/badge/release-0.5.57-orange)
 
-**[⬇️ 下载 APK](releases)** · **[🎮 在线试玩键盘线框](https://uniwuyuan.github.io/banzi/)** · **[📐 设计资料](design/)** · **[🧪 引擎研究](docs/)**
+**[⬇️ 下载 APK](https://github.com/uniwuyuan/banzi/releases/latest)** · **[🎮 在线试玩键盘线框](https://uniwuyuan.github.io/banzi/)** · **[🎛️ 在线设计台](https://uniwuyuan.github.io/banzi/design-console.html)** · **[📐 设计资料](design/)** · **[🧪 引擎研究](docs/)**
 
 ---
 
@@ -63,7 +63,7 @@ images/       README 截图
 
 ## 体验方式
 
-1. **APK**：到 [Releases](releases) 下载，Android 8.0+ / arm64（离线语音模型需按提示下载）
+1. **APK**：到 [Releases](https://github.com/uniwuyuan/banzi/releases/latest) 下载，Android 8.0+ / arm64（离线语音模型需按提示下载）
 2. **不装也能试**：打开 [在线 Demo](https://uniwuyuan.github.io/banzi/)，点数字/运算符/计算键就能玩键盘线框
 3. **看设计怎么定**：`design/SCHEMA.md` 是设计台 ↔ 输入法的唯一 JSON 契约
 
