@@ -4,10 +4,10 @@
 
 ![minSdk](https://img.shields.io/badge/Android-8.0%2B%20(26)-brightgreen)
 ![license](https://img.shields.io/badge/license-Apache--2.0-blue)
-![stars](https://img.shields.io/github/stars/USER/banzi?style=social)
+![stars](https://img.shields.io/github/stars/uniwuyuan/banzi?style=social)
 ![release](https://img.shields.io/badge/release-0.5.57-orange)
 
-**[⬇️ 下载 APK](releases)** · **[🎮 在线试玩键盘线框](https://USER.github.io/banzi/)** · **[📐 设计资料](design/)** · **[🧪 引擎研究](docs/)**
+**[⬇️ 下载 APK](releases)** · **[🎮 在线试玩键盘线框](https://uniwuyuan.github.io/banzi/)** · **[📐 设计资料](design/)** · **[🧪 引擎研究](docs/)**
 
 ---
 
@@ -29,7 +29,7 @@
 
 ## 为什么值得 star
 
-1. **可玩的设计台**：浏览器里直接点键盘线框（[在线 demo](https://USER.github.io/banzi/)），键距/键高/圆角改一下立刻看到效果 —— 大部分输入法项目没有这个
+1. **可玩的设计台**：浏览器里直接点键盘线框（[在线 demo](https://uniwuyuan.github.io/banzi/)），键距/键高/圆角改一下立刻看到效果 —— 大部分输入法项目没有这个
 2. **离线联想算法 v4**：候选池 = 证据词 ∪ 个人高频，时间衰减 + trigram，held-out `hit@5 9.69%`（基线 2.84%），评测协议与脚本全部开源（[docs/ASSOC-V4.md](docs/ASSOC-V4.md)、[ai/eval_assoc.py](ai/eval_assoc.py)）
 3. **前缀召回研究**：66.4% 的选词与历史输入同拼音，56.9% 的记录可省按键（[docs/PHRASE-MEMORY-RESEARCH.md](docs/PHRASE-MEMORY-RESEARCH.md)）
 4. **UI 设计资产**：35 个 24×24 SVG 图标 + 设计契约 JSON + 二级页规格，可直接挪到别的项目（[design/](design/)）
@@ -64,7 +64,7 @@ images/       README 截图
 ## 体验方式
 
 1. **APK**：到 [Releases](releases) 下载，Android 8.0+ / arm64（离线语音模型需按提示下载）
-2. **不装也能试**：打开 [在线 Demo](https://USER.github.io/banzi/)，点数字/运算符/计算键就能玩键盘线框
+2. **不装也能试**：打开 [在线 Demo](https://uniwuyuan.github.io/banzi/)，点数字/运算符/计算键就能玩键盘线框
 3. **看设计怎么定**：`design/SCHEMA.md` 是设计台 ↔ 输入法的唯一 JSON 契约
 
 ## 权限与隐私
