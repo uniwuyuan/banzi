@@ -1,5 +1,7 @@
 # 半字 · Banzi
 
+**中文** · [English](README.en.md)
+
 > 一台手机、纯 Java、原生 Canvas 写出来的 Android 输入法：AI 联想 + 可玩 HTML 设计台 + 隐私模式。
 
 ![minSdk](https://img.shields.io/badge/Android-8.0%2B%20(26)-brightgreen)
