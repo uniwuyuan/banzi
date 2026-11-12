@@ -98,4 +98,4 @@ Kotlin stdlib、sherpa-onnx、onnxruntime（Apache-2.0）等，详见 [NOTICE](N
 
 ---
 
-<sub>如果这个项目给了你灵感，点个 ⭐ 就是最大的支持。</sub>
+<sub>如果这个项目给了你灵感，点个 ⭐；有定制需求（企业输入法 / 小语种键盘 / 键盘 SDK）欢迎开 issue。</sub>
